@@ -21,13 +21,14 @@ const CardBody = (props) => {
       {props.isEditing ? (
         <Textarea
           type="text"
+          data-testid="cardBodyTextarea"
           ref={textareaRef}
           value={props.editedDescr}
           onChange={props.descrChangeHandler}
           onClick={(e) => autoResize(e.target)}
         ></Textarea>
       ) : (
-        <Paragraph>{props.descr}</Paragraph>
+        <Paragraph data-testid="cardBodyParagraph">{props.descr}</Paragraph>
       )}
     </Fragment>
   );

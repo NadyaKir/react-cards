@@ -29,21 +29,34 @@ const CardHeader = (props) => {
             ref={textareaRef}
             value={props.editedTitle}
             onChange={props.titleChangeHandler}
+            data-testid="headerInput"
           ></Textarea>
         ) : (
-          <Title>{props.title}</Title>
+          <Title data-testid="headerTitle">{props.title}</Title>
         )}
         {!props.isEditing && !readOnly && (
-          <Button $edit="true" onClick={props.clickEditButtonHandler}>
+          <Button
+            $edit="true"
+            onClick={props.clickEditButtonHandler}
+            data-testid="editButton"
+          >
             <MdEdit />
           </Button>
         )}
         {props.isEditing && (
           <Fragment>
-            <Button $save="true" onClick={props.clickSaveButtonHandler}>
+            <Button
+              $save="true"
+              data-testid="saveButton"
+              onClick={props.clickSaveButtonHandler}
+            >
               <MdSave />
             </Button>
-            <Button $cancel="true" onClick={props.clickCancelButtonHandler}>
+            <Button
+              $cancel="true"
+              data-testid="cancelButton"
+              onClick={props.clickCancelButtonHandler}
+            >
               <MdEditOff />
             </Button>
           </Fragment>
@@ -51,6 +64,7 @@ const CardHeader = (props) => {
         {!props.isEditing && !readOnly && !props.hiddenCheckbox && (
           <Checkbox
             type="checkbox"
+            data-testid="cardCheckbox"
             style={{ display: props.isEditing ? 'none' : 'block' }}
             checked={props.isChecked}
             onChange={props.checkboxChangeHandler}

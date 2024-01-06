@@ -1,4 +1,4 @@
-export const logActionMiddleware = (store) => (next) => (action) => {
+export const logActionMiddleware = () => (next) => (action) => {
   console.log('Dispatching action:', action.type);
   if (action.payload) {
     console.log('Action payload:', action.payload);

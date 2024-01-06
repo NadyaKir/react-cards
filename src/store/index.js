@@ -1,12 +1,13 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
 import { v4 as uuidv4 } from 'uuid';
 
 import { logActionMiddleware } from './logActionMiddleware';
 
 const initialCardsState = {
-  items: [],
-  readOnly: true,
+  // items: [],
+  items: [{ Number: '001', isEditing: true }],
+  readOnly: false,
+  // readOnly: true,
   isAddModalOpen: false,
   itemsCount: 0,
 };
@@ -113,7 +114,8 @@ const store = configureStore({
     cards: cardsSlice.reducer,
     login: loginSlice.reducer,
   },
-  middleware: [thunk, logActionMiddleware],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(logActionMiddleware),
 });
 
 export const cardsActions = cardsSlice.actions;
